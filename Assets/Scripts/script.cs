@@ -74,11 +74,14 @@ public class script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
+        //rotating the collectables
         for(int i = 0; i < _amount; i++) {
+            
+            float rotAngle = 90f * Time.deltaTime;
 
             if(_collectables[i] != null)
-                _collectables[i].transform.rotation *= Quaternion.Euler(0,3,0);
+                _collectables[i].transform.rotation *= Quaternion.Euler(0, rotAngle, 0);
         }
     }
 }

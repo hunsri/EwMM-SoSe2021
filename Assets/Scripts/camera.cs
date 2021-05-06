@@ -22,10 +22,10 @@ public class camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.UpArrow)){
+        if(Input.GetKey(KeyCode.R)){
             _height += 0.1f;
         }
-        if(Input.GetKey(KeyCode.DownArrow)){
+        if(Input.GetKey(KeyCode.F)){
             _height -= 0.1f;
         }
 
