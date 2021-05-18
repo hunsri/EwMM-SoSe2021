@@ -9,19 +9,28 @@ public class script : MonoBehaviour
     [SerializeField]
     private Transform _myPrefab;
 
+    [SerializeField]
+    private Transform _player;
+
     private static readonly bool collisonTest = true;
 
     public static readonly int _amount = 8;
     private static readonly int _maxSearches = 100;
     private Vector3[] positions = new Vector3[_amount];
 
-    private float _combinedPrefabRadius = 2f;
+    // the combined radius of two collectables
+    private float _combinedPrefabRadius = 0.2f;
 
     private Transform[] _collectables = new Transform[_amount];
 
+    private GameObject _plane;
+
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        //locating the plane where everything is placed on
+        _plane = GameObject.Find("Quad");
+
         //placing the collectables
         int searches;
         for(int i = 0; i < _amount; i++){
@@ -41,7 +50,8 @@ public class script : MonoBehaviour
                         
                         if(distance < _combinedPrefabRadius)
                         {
-                            placingVector = placingVector + new Vector3(RV(), 0.0f, RV());
+                            /* placingVector = placingVector + new Vector3(RV(), _plane.transform.position.y , RV()); */
+                            placingVector = placingVector + new Vector3(RV(), 0, RV());
                             collided = true;
                             break;
                         } else
@@ -56,25 +66,29 @@ public class script : MonoBehaviour
             positions[i] = placingVector;
 
             _collectables[i] = Instantiate(_myPrefab, placingVector, Quaternion.Euler(0,0,0));
+            _collectables[i].transform.SetParent(_plane.transform);
 
         }
 
+        //placing the player with a little offset above the planes center
+        Instantiate(_player, new Vector3(0, 0.15f, 0), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
+        
         //placing the monsters
-        Instantiate(_monster, new Vector3(5, 0, 5), Quaternion.Euler(0,0,0));
-        Instantiate(_monster, new Vector3(-5, 0, 5), Quaternion.Euler(0,0,0));
-        Instantiate(_monster, new Vector3(-5, 0, -5), Quaternion.Euler(0,0,0));
-        Instantiate(_monster, new Vector3(5, 0, -5), Quaternion.Euler(0,0,0));
+        Instantiate(_monster, new Vector3(1.5f, 0, 1.5f), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
+        Instantiate(_monster, new Vector3(-1.5f, 0, 1.5f), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
+        Instantiate(_monster, new Vector3(-1.5f, 0, -1.5f), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
+        Instantiate(_monster, new Vector3(1.5f, 0, -1.5f), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
+        
     }
 
     float RV(){
-        float randomValue = UnityEngine.Random.Range(-3f, 3f);
+        float randomValue = UnityEngine.Random.Range(-1f, 1f);
         return randomValue;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         //rotating the collectables
         for(int i = 0; i < _amount; i++) {
             

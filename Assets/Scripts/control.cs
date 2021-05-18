@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerInput))]
 public class control : MonoBehaviour
 {
 
@@ -12,12 +13,22 @@ public class control : MonoBehaviour
 
     private int _collected = 0;
 
+    private PlayerInput playerInput;
+
+    private GameObject _plane;
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
+
     // Update is called once per frame
     void Update()
     {
+        float moveHorizontal = playerInput.Horizontal;
+        float moveVertical = playerInput.Vertical;
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        //calculating new viewing angle and targeted direction
         _angle += moveHorizontal * _rotSpeed * Time.deltaTime;
         Vector3 targetDirection = new Vector3(Mathf.Sin(_angle), 0, Mathf.Cos(_angle));
 
@@ -27,15 +38,16 @@ public class control : MonoBehaviour
 
     }
     private void OnCollisionEnter(Collision other){
-        Debug.Log(other.gameObject.name);
         GameObject go = other.gameObject;
         
+        //checks whether there is a collison with a collectible..
         if(go.name == "Cheese(Clone)") {
             Destroy(go);
             _collected += 1;
             Debug.Log("Collected: "+ _collected +" / "+ script._amount);
-        } else if(go.name == "Olive(Clone)") {
-            Debug.Log("GAME OVER!");
+        } //or an enemy 
+        else if(go.name == "Olive(Clone)") {
+            Debug.Log("GAME OVER! time to fly :D");
             //Application.Quit();
             Destroy(this);
         }
