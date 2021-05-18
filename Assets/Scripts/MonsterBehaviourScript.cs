@@ -5,15 +5,13 @@ using UnityEngine;
 public class MonsterBehaviourScript : MonoBehaviour
 {
 
-    [SerializeField]
-    private float _speed = 15f;
-    // [SerializeField]
+    private float _speed = 1f;
     private Transform _target;
 
-         // Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
-        _target =  GameObject.Find("Player").transform;
+        _target =  GameObject.Find("Player(Clone)").transform;
     }
 
     // Update is called once per frame

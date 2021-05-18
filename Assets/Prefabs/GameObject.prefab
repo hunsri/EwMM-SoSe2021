@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monster: {fileID: 753010476338881371, guid: 0ab6581dec268e49fa611af3a187b110, type: 3}
-  _myPrefab: {fileID: 7967629277621544798, guid: 83e9fcf6986bbbe33979f9a5aa79d740, type: 3}
+  _myPrefab: {fileID: 7967629277621544798, guid: 83e9fcf6986bbbe33979f9a5aa79d740,
+    type: 3}
+  _player: {fileID: 3967883265605631528, guid: 218d152fd291a965ea86152a8a283bec, type: 3}
