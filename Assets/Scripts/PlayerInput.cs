@@ -8,7 +8,6 @@ public class PlayerInput : MonoBehaviour
   public float Horizontal { get; private set; }
   public float Vertical { get; private set; }
 
-  private GameObject vbBtnObj;
   private readonly string[] _buttonNames = new string[] { "forward", "left", "backward", "right" };
 
   //holds a value representing the wanted direction once a Virtual Button is pressed
@@ -18,16 +17,6 @@ public class PlayerInput : MonoBehaviour
   private readonly float _vbSpeed = 0.5f;
 
 
-    void Start()
-    {
-        for (int i = 0; i < _buttonNames.Length; i++)
-        {
-            vbBtnObj = GameObject.Find(_buttonNames[i]);
-
-            vbBtnObj.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonPressed(OnButtonPressed);
-            vbBtnObj.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonReleased(OnButtonReleased);
-        }
-    }
 
      public void OnButtonPressed(VirtualButtonBehaviour vb)
     {

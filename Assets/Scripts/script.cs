@@ -9,9 +9,6 @@ public class script : MonoBehaviour
     [SerializeField]
     private Transform _myPrefab;
 
-    [SerializeField]
-    private Transform _player;
-
     private static readonly bool collisonTest = true;
 
     public static readonly int _amount = 8;
@@ -71,7 +68,7 @@ public class script : MonoBehaviour
         }
 
         //placing the player with a little offset above the planes center
-        Instantiate(_player, new Vector3(0, 0.15f, 0), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
+        //Instantiate(_player, new Vector3(0, 0.15f, 0), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
         
         //placing the monsters
         Instantiate(_monster, new Vector3(1.5f, 0, 1.5f), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);

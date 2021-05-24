@@ -13,10 +13,12 @@ public class camera : MonoBehaviour
     [SerializeField]
     private float _height = 1f;
 
+    private float _distance = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
-        _cameraPosition =  new Vector3(_target.transform.position.x, 0, _target.transform.position.z) + new Vector3(0,0,-5);
+        _cameraPosition =  new Vector3(_target.transform.position.x, 0, _target.transform.position.z) + new Vector3(0,0,-_distance);
     }
 
     // Update is called once per frame
@@ -28,9 +30,15 @@ public class camera : MonoBehaviour
         if(Input.GetKey(KeyCode.F)){
             _height -= 0.1f;
         }
+        if(Input.GetKey(KeyCode.Plus) && _distance > 1f){
+            _distance -= 0.1f;
+        }
+        if(Input.GetKey(KeyCode.Minus) && _distance < 10f){
+            _distance += 0.1f;
+        }
 
 
-        _endPosition = new Vector3(_target.transform.position.x, 0, _target.transform.position.z) + _target.transform.rotation * new Vector3(0,0, -5);
+        _endPosition = new Vector3(_target.transform.position.x, 0, _target.transform.position.z) + _target.transform.rotation * new Vector3(0,0, -_distance);
 
         //transform.position = _target.transform.position + _target.transform.rotation * new Vector3(0, 1, -5);
         //_endPosition = _target.transform.position + _target.transform.rotation * new Vector3(0, 1, 5);

@@ -47,7 +47,7 @@ public class control : MonoBehaviour
             Debug.Log("Collected: "+ _collected +" / "+ script._amount);
         } //or an enemy 
         else if(go.name == "Olive(Clone)") {
-            Debug.Log("GAME OVER! time to fly :D");
+            Debug.Log("GAME OVER!");
             //Application.Quit();
             Destroy(this);
         }
