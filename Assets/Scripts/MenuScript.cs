@@ -8,8 +8,6 @@ using System;
 public class MenuScript : MonoBehaviour
 {
     private GameObject _menu;
-    private bool _isVisible = false;
-
     private DateTime _lastTimeOpened;
     private DateTime _lastTimeClosed;
     //the amount of time that needs to have passed before the menu can be closed or opened again via key input

@@ -63,18 +63,16 @@ public class script : MonoBehaviour
             positions[i] = placingVector;
 
             _collectables[i] = Instantiate(_myPrefab, placingVector, Quaternion.Euler(0,0,0));
-            _collectables[i].transform.SetParent(_plane.transform);
-
         }
 
         //placing the player with a little offset above the planes center
         //Instantiate(_player, new Vector3(0, 0.15f, 0), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
         
         //placing the monsters
-        Instantiate(_monster, new Vector3(1.5f, 0, 1.5f), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
-        Instantiate(_monster, new Vector3(-1.5f, 0, 1.5f), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
-        Instantiate(_monster, new Vector3(-1.5f, 0, -1.5f), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
-        Instantiate(_monster, new Vector3(1.5f, 0, -1.5f), Quaternion.Euler(0,0,0)).transform.SetParent(_plane.transform);
+        Instantiate(_monster, new Vector3(1.5f, 0, 1.5f), Quaternion.Euler(0,0,0));
+        Instantiate(_monster, new Vector3(-1.5f, 0, 1.5f), Quaternion.Euler(0,0,0));
+        Instantiate(_monster, new Vector3(-1.5f, 0, -1.5f), Quaternion.Euler(0,0,0));
+        Instantiate(_monster, new Vector3(1.5f, 0, -1.5f), Quaternion.Euler(0,0,0));
         
     }
 
