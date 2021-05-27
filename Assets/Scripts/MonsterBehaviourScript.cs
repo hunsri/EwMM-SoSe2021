@@ -11,7 +11,7 @@ public class MonsterBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _target =  GameObject.Find("Player(Clone)").transform;
+        _target =  GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame

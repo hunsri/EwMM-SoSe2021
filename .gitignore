@@ -1,8 +1,10 @@
-.vscode
-Library
-Logs
-Temp
-UserSettings
-*.sln
-*.csproj
-sysinfo.txt
+# Ignore Everything
+/*
+
+# Except for these:
+!/.gitignore
+!/.gitattributes
+!/Assets
+!/ProjectSettings
+!/Packages
+!/README.md

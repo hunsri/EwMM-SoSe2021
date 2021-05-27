@@ -41,13 +41,14 @@ public class control : MonoBehaviour
         GameObject go = other.gameObject;
         
         //checks whether there is a collison with a collectible..
-        if(go.name == "Cheese(Clone)") {
+         Debug.Log(go.name);
+        if(go.name == "Collectable(Clone)") {
             Destroy(go);
             _collected += 1;
             Debug.Log("Collected: "+ _collected +" / "+ script._amount);
         } //or an enemy 
         else if(go.name == "Olive(Clone)") {
-            Debug.Log("GAME OVER! time to fly :D");
+            Debug.Log("GAME OVER!");
             //Application.Quit();
             Destroy(this);
         }
